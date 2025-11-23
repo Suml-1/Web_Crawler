@@ -1,0 +1,31 @@
+<html>
+<head>
+    <script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        // DES 加密示例
+        var aseKey = "12345678";   // 8位密钥
+        var message = "i am bobo, who are you ?";
+        
+        // 加密
+        var encrypt = CryptoJS.DES.encrypt(message, CryptoJS.enc.Utf8.parse(aseKey), {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7
+        }).toString();
+        
+        console.log("加密结果:", encrypt);
+        alert("加密结果: " + encrypt);
+        
+        // 解密
+        var decrypt = CryptoJS.DES.decrypt(encrypt, CryptoJS.enc.Utf8.parse(aseKey), {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7
+        });
+        
+        var decryptedText = decrypt.toString(CryptoJS.enc.Utf8);
+        console.log("解密结果:", decryptedText);
+        alert("解密结果: " + decryptedText);
+    </script>
+</body>
+</html>
